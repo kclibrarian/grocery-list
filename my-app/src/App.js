@@ -1,22 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import "./App.css";
+import Item from "./components/item";
+const initList = [
+  { name: "tomato", calorie: 30 },
+  { name: "cantaloupe", calorie: 20},
+  { name: "ground beef", calorie: 100 },
+];
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h2>Grocery List</h2>
+        {DataTransferItemList.list.map((v, k) => {
+          return <Item />;
+        })}
       </header>
     </div>
   );
