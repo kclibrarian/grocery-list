@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./App.css";
-import item from "./components/item";
 import Item from "./components/item";
 import useList from "./hooks/useList";
 
@@ -23,13 +22,12 @@ function App() {
 
   function makeEditableHandle(){
     setEditable(true);
-
   }
 
   function keyPressHandle(e, i) {
     if(e.key === "Enter") {
       setEditable(!editable);
-      item.saveItem(i, e.target.value)
+      items.saveItem(i, e.target.value);
       // //Moved to Hook
       // const copyList = [...list];
       // copyList[i].name = e.target.value;
@@ -45,24 +43,22 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h2>Grocery List</h2>
-        {
-          items.list.map( (v, k )=> {
-            return (
-              <Item
-                key={`${k}${v.name}${v.calorie}`}
-                item={v}
-                onClick={removeItemHandle}
-                editable={editable}
-                onDoubleClick={makeEditableHandle}
-                onKeyPress={keyPressHandle}
-              />
-            );
-          })
-        }
-
+        {items.list.map((v, k) => {
+          return (
+            <Item
+              key={`${k}${v.name}${v.calorie}`}
+              item={v}
+              onClick={removeItemHandle}
+              editable={editable}
+              onDoubleClick={makeEditableHandle}
+              onKeyPress={keyPressHandle}
+              index={k}
+            />
+          );
+        })}
       </header>
     </div>
-  )
+  );
 }
 
 export default App;

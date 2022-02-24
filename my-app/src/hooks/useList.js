@@ -9,11 +9,11 @@ function useList(init){
             const filteredList = list.filter(v => v.name !== item);
             setList(filteredList);
         },
-        saveItem(item, newVal){
+        saveItem(index, newVal){
             const copyList = [...list];
-            copyList[indexedDB].name = newVal;
+            copyList[index].name = newVal;
         }
-    }
+    };
 }
 
 export default useList;
